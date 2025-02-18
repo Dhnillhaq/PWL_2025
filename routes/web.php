@@ -30,20 +30,19 @@ Route::get('/world', function () {
     return 'World';
 });
 
-Route::get('/',[HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get("/articles/{id}",[ArticleController::class, 'index']);
+Route::get("/articles/{id}", [ArticleController::class, 'index']);
 
-Route::get('/user/{name?}', function ($name="John") {
+Route::get('/user/{name?}', function ($name = "John") {
     return 'Nama saya ' . $name;
 });
 
 
-Route::get('/posts/{post}/comments/{comment}', function
-($postId, $commentId) {
-    return 'Pos ke-'.$postId." Komentar ke-: ".$commentId;
+Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
+    return 'Pos ke-' . $postId . " Komentar ke-: " . $commentId;
 });
 
 Route::get('/articles/{id}', function ($id) {
@@ -54,9 +53,15 @@ Route::get('/articles/{id}', function ($id) {
 
 Route::get('/user/profile', function () {
     //
-    })->name('profile');
+})->name('profile');
 
 // Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
 Route::resource('photos', PhotoController::class);
+
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Dhanil']);
+// });
+
+Route::get("/greeting", [WelcomeController::class, 'greeting']);
